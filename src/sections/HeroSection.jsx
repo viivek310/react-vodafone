@@ -1,7 +1,9 @@
 import React from 'react'
 import heroImg from "../assets/images/hero.png"
 
+
 function HeroSection() {
+
     return (
         <section className='h-[2650px] min-[480px]:h-[2400px] sm:h-[1600px] xl:h-[1100px] bg-[#F5F8F9] pt-9 pb-24 px-5 sm:px-10'>
             <div className='flex flex-col h-full'>
@@ -15,12 +17,12 @@ function HeroSection() {
                     scheduling, dispatching, invoicing and payment collection.</p>
 
                 <div className='text-center flex flex-col sm:flex-row justify-center gap-5 mt-14 mb-14 xl:mb-0 relative z-10'>
-                    <button className='text-[22px] bg-[#142F32] py-5 px-16 text-white rounded-full hover:bg-[#225358] transition-colors duration-300 ease-linear'>Get Started</button>
-                    <button className='text-[22px] bg-white py-5 px-16 rounded-full hover:bg-[#142F32] hover:text-white transition-colors duration-300 ease-linear'>Try Demo</button>
+                    <Link to={"/signup"} className='text-[22px] bg-[#142F32] py-5 px-16 text-white rounded-full hover:bg-[#225358] transition-colors duration-300 ease-linear'>Get Started</Link>
+                    <Link to={"signup"} className='text-[22px] bg-white py-5 px-16 rounded-full hover:bg-[#142F32] hover:text-white transition-colors duration-300 ease-linear'>Try Demo</Link>
                 </div>
 
                 <div className='flex-1 relative'>
-                    <div className='absolute top-0 grid grid-cols-12 auto-rows-[300px] xl:auto-rows-auto  w-full gap-5 items-end'>
+                    <div className='absolute top-0 xl:top-[-70px] grid grid-cols-12 auto-rows-[300px] xl:auto-rows-auto  w-full gap-5 items-end'>
                         <div className='col-span-12 xl:col-span-3 w-full flex justify-center bg-white h-full xl:h-auto rounded-[25px]'><img className='object-contain' src={heroImg} alt="" /></div>
 
 
@@ -78,5 +80,7 @@ function HeroSection() {
         </section>
     )
 }
+import { Link } from 'react-router-dom'
+import Signup from '../pages/Signup'
 
 export default HeroSection

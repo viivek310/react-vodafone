@@ -7,7 +7,8 @@ import HomeServices from '../sections/HomeServices'
 import Download from '../sections/Download'
 import Pricing from '../sections/Pricing'
 import Support from '../sections/Support'
-// import Trial from '../sections/Trial'
+import Trial from '../sections/Trial'
+import Footer from '../sections/Footer'
 
 function Home() {
   return (
@@ -28,7 +29,9 @@ function Home() {
 
         <Support />
 
-        {/* <Trial /> */}
+        <Trial />
+
+        <Footer />
     </>
   )
 }
