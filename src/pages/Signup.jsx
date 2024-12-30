@@ -24,6 +24,7 @@ import qr from "../assets/svgs/qrcode.svg"
 import android from "../assets/svgs/android.svg"
 import apple from "../assets/svgs/apple.svg"
 
+
 function Signup() {
   const [personal, setPersonal] = useState(true)
   const [business, setBusiness] = useState(false)
@@ -130,6 +131,10 @@ function Signup() {
         if (step === 7)
           setProgress(100)
         else
+          if(step>=5){
+            setPersonal(false)
+            setBusiness(true)
+          }
           setProgress(12 * (step + 1))
         setStep(num => num + 1)
       } else {
@@ -156,10 +161,10 @@ function Signup() {
       <Nav2 />
 
       <section className='pb-5 min-h-[90svh]'>
-        <div className='w-[800px] px-14 mx-auto'>
+        <div className='max-w-[800px] px-5 md:px-14 mx-auto'>
 
-          <div className='flex justify-between mb-11'>
-            <div className='flex gap-2 items-center text-[#ACACAC] '>
+          <div className='flex justify-between mb-11 relative before:w-full before:h-[1px] before:bg-[#CFD6DC] before:hidden  sm:before:block before:absolute before:top-1/2  before:-translate-y-1/2 flex-col sm:flex-row gap-y-5 sm:gap-y-0 w-fit sm:w-auto mx-auto'>
+            <div className='flex gap-2 items-center text-[#ACACAC] relative z-10 bg-white sm:pr-3'>
               <div>
                 {personal ? (
                   <div className='bg-[#EE3023] rounded-full h-5 aspect-square grid place-items-center'>
@@ -174,7 +179,7 @@ function Signup() {
             </div>
 
 
-            <div className='flex gap-2 items-center text-[#ACACAC] '>
+            <div className='flex gap-2 items-center text-[#ACACAC]  relative z-10 bg-white sm:px-3'>
               <div>
                 {business ? (
                   <div className='bg-[#EE3023] rounded-full h-5 aspect-square grid place-items-center'>
@@ -189,7 +194,7 @@ function Signup() {
             </div>
 
 
-            <div className='flex gap-2 items-center text-[#ACACAC] '>
+            <div className='flex gap-2 items-center text-[#ACACAC]  relative z-10 bg-white sm:pl-3'>
               <div>
                 {congratulations ? (
                   <div className='bg-[#EE3023] rounded-full h-5 aspect-square grid place-items-center'>
@@ -218,7 +223,7 @@ function Signup() {
               <Email /> */}
               {components[step]}
               {/* <button type='submit'></button> */}
-            <button  onClick={next} className='bg-black hover:bg-slate-800 transition-colors duration-300 text-white flex w-full text-[28px] font-bold items-center py-4 rounded-full px-8 mb-7 mt-8'>
+            <button  onClick={next} className='bg-black hover:bg-slate-800 transition-colors duration-300 text-white flex w-full text-lg lg:text-[28px] font-bold items-center py-4 rounded-full px-8 mb-7 mt-8'>
               <div className='ml-auto'>Continue</div>
               <div className='ml-auto'><FaArrowRight /></div>
             </button>
@@ -239,11 +244,15 @@ function Signup() {
         {!congratulations && <div className='mx-auto max-w-[1400px]'>
           <Swiper
             spaceBetween={10}
-            slidesPerView={4.5}
+            // slidesPerView={4.5}
           // onSlideChange={() =>}
           // onSwiper={(swiper) => }
             breakpoints={{
-              700:{
+             
+              600:{
+                slidesPerView:2
+              },
+              900:{
                 slidesPerView:3
               },
               1400:{
@@ -294,8 +303,8 @@ function Signup() {
           </Swiper>
         </div>}
 
-        {congratulations&&<div>
-          <div className='text-[50px] font-bold text-[#E60000] mb-10 text-center'>Congratulations</div>
+        {congratulations&&<div className='px-5'>
+          <div className='text-4xl lg:text-[50px] font-bold text-[#E60000] mb-10 text-center'>Congratulations</div>
           <div className='text-[18px] font-bold text-[#00AC4F] text-center mb-10'>Your instance creation is in progress. Once it is completed, we will notify you via email.</div>
 
           <div className='mb-7 flex justify-center'>
@@ -308,7 +317,7 @@ function Signup() {
 
           <div className='text-[28px] mb-7 text-center'>Download App From</div>
 
-          <div className='flex justify-center gap-10 mb-7'>
+          <div className='flex flex-col sm:flex-row items-center justify-center gap-10 mb-7'>
             <div className='bg-black flex items-center text-white w-fit py-[18px] px-10 rounded-xl gap-3'>
               <div><img src={android} alt="" /></div>
               <div>

@@ -3,7 +3,7 @@ import React from 'react'
 
 function FeaturesCard({ svg, heading, text }) {
     return (
-        <div className='py-5 text-[#0D0D0D] space-y-3 text-center h-[250px] w-[290px] shadow-[0px_2px_8px_#00000029] my-2 cursor-pointer mx-1 rounded-md'>
+        <div className='py-5 text-[#0D0D0D] space-y-3 text-center h-[250px] w-full shadow-[0px_2px_8px_#00000029] my-2 cursor-pointer mx-1 rounded-md'>
             <div className='flex justify-center'>
                 <img src={svg} alt="" />
             </div>
