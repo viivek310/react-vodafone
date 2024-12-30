@@ -102,7 +102,7 @@ function Signup() {
   <BusinessType value={formdata.businesstype} onChange={handleChange} errors={errors}/>,
   <Employees value={formdata.employees} onChange={handleChange} errors={errors}/>]
 
-  console.log(formdata,errors)
+
   const next = (e) => {
     e.preventDefault()
     const fields = [
