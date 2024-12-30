@@ -37,7 +37,7 @@ function Signup() {
     email:"",
     username:"",
     password:"",
-    confpassword:"",
+    "confirm password":"",
     country:"",
     phone:"",
     businessname:"",
@@ -52,18 +52,20 @@ function Signup() {
 
   const validate = (name,value) =>{
     if(value===""){
-      return `required`
+      return `${name} is required`
     }
+
     const patterns = {
       firstname: /^[A-Za-z\s]+$/,
       lastname: /^[A-Za-z\s]+$/,
       email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
       username: /^[A-Za-z][A-Za-z0-9]{4,}$/,
       password: /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d).{8,}$/,
-      phone: /^\+?[1-9]\d{0,2}\s?\d{10}$/,
+      phone: /^\d{10}$/,
     }
 
-    
+    if(name==="confirm password")
+
     if(!patterns[name]?.test(value)){
       switch(name){
           case "firstname":
@@ -76,10 +78,10 @@ function Signup() {
             return "Username must be alphanumeric and at least 5 characters.";
           case "password":
             return "Password must be 8+ characters, include a number and a special character.";
-          case "confpassword":
+          case "confirm password":
             return value!==formdata.password?"Password do not match":""
           case "phone":
-            return "Phone number must be 10 digits and can include country code";
+            return "Phone number must be 10 digits";
           default:
             return "";
        }
@@ -93,20 +95,21 @@ function Signup() {
   const components = [<Name firstname={formdata.firstname} lastname={formdata.lastname} onChange={handleChange} errors={errors}/>,
   <Email value={formdata.email} onChange={handleChange} errors={errors}/>,
   <Username value={formdata.username} onChange={handleChange} errors={errors} />,
-  <Password password={formdata.password} confpassword={formdata.confpassword} onChange={handleChange} errors={errors}/>,
+  <Password password={formdata.password} confpassword={formdata["confirm password"]} onChange={handleChange} errors={errors}/>,
   <Country  value={formdata.country} onChange={handleChange} errors={errors}/>,
-  <Phone value={formdata.phone} onChange={handleChange} errors={errors}/>,
+  <Phone value={formdata.phone} onChange={handleChange} errors={errors} country={formdata.country}/>,
   <BusinessName value={formdata.businessname} onChange={handleChange} errors={errors}/>,
   <BusinessType value={formdata.businesstype} onChange={handleChange} errors={errors}/>,
   <Employees value={formdata.employees} onChange={handleChange} errors={errors}/>]
 
+  console.log(formdata,errors)
   const next = (e) => {
     e.preventDefault()
     const fields = [
       ["firstname","lastname"],
       ["email"],
       ["username"],
-      ["password","confpassword"],
+      ["password","confirm password"],
       ["country"],
       ["phone"],
       ["businessname"],

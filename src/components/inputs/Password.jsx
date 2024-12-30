@@ -13,9 +13,9 @@ function Password({password,confpassword,onChange,errors}) {
                 </div>
                 <div>
                     <label htmlFor=""><span>Confirm Password</span><span className='text-[#EE3023] ml-1'>*</span></label>
-                    <input value={confpassword} onChange={(e)=>onChange("confpassword",e.target.value)} className='w-full border border-[#D1D1D1] h-[50px] rounded-[5px] px-3' type="password" />
+                    <input value={confpassword} onChange={(e)=>onChange("confirm password",e.target.value)} className='w-full border border-[#D1D1D1] h-[50px] rounded-[5px] px-3' type="password" />
 
-                    {errors.confpassword&&<div className='text-red-500 text-sm pl-2'>{errors.confpassword}</div>}
+                    {errors["confirm password"]&&<div className='text-red-500 text-sm pl-2'>{errors["confirm password"]}</div>}
                 </div>
             </div>
     </>
